@@ -5,43 +5,21 @@ using namespace std;
 class MyHashMap {
 public:
   
-    vector<int> ans = {};
-    vector<vector<int>> map = {};
-    int map_length = 0;
+    int data[1000001];
     MyHashMap() {
-        return ans;
+        fill(data, data+1000000, -1);
     }
     
     void put(int key, int value) {
-        for (int i=0; i<map.size(); i++){
-            if (map[i][0] == key){
-                map[i][1] = value;
-                ans.push_back(NULL);
-                return;
-            }
-        }
-        vector<int> temp = {key, value};
-        map.push_back(temp);
-        ans.push_back(NULL);
+        data[key] = value;
     }
     
     int get(int key) {
-        if (map.size() < key+1){
-            ans.push_back(-1);
-            return -1;
-        }
-        else {
-            ans.push_back(1);
-            return 1;
-        }
+        return data[key];
     }
     
     void remove(int key) {
-        if (map.size() < key+1){
-            ans.push_back(-1);
-            return;
-        }
-        else ans.push_back(NULL);
+        data[key] = -1;
     }
 };
 
